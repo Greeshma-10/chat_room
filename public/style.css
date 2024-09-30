@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #FEE3E3; /* Light Pink */
 }
 
 .app {
@@ -42,9 +42,22 @@ body {
     align-items: center;
 }
 
+/* Basic styling for the join screen */
+/* Basic styling for the join screen */
+.join-screen {
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Add padding around the join screen */
+}
+
 .form {
-    width: 90%;
-    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Make the form responsive */
+    max-width: 350px; /* Set a max-width for larger screens */
+    margin: auto;
 }
 
 h2 {
@@ -54,13 +67,15 @@ h2 {
 }
 
 .form-input {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increased bottom margin for better spacing */
 }
 
-label {
+.form-input label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-size: 14px;
+    color: #333;
+    font-weight: 500;
 }
 
 input[type="text"] {
@@ -75,7 +90,101 @@ input[type="text"] {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #F08080; /* Coral */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #F3A4A4; /* Lighter coral on hover */
+}
+
+.form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto;
+}
+
+.form-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-input select, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #EAB8E4; /* Soft Lavender border */
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #F8D9E9; /* Light Pink input field */
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.form-input select:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #6b6ef9;
+    background-color: #fff;
+}
+
+.form-input select:hover, input[type="text"]:hover {
+    border-color: #bbb;
+}
+
+/* Styling for the join screen dropdown */
+/* Styling for the join screen dropdown */
+.form-input select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #EAB8E4; /* Soft Lavender border color */
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #F8D9E9; /* Light Pink background color */
+    color: #333; /* Text color */
+    transition: border 0.3s ease, background-color 0.3s ease;
+    -webkit-appearance: none; /* Remove the default arrow in some browsers */
+    appearance: none; /* Remove default dropdown styles */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDEyIDEwIj48cGF0aCBkPSJNMSAyLjVsNSA1IDUtNSIvPjwvc3ZnPg==');
+    background-size: 15px;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+}
+
+/* Styling for dropdown options */
+.form-input select option {
+    padding: 10px;
+    font-size: 14px;
+    color: #333; /* Text color for options */
+    background-color: #FEE3E3; /* Light Pink background for options */
+}
+
+/* Style for selected option */
+.form-input select option:checked {
+    background-color: #F08080; /* Light Lavender for the selected option */
+    color: white; /* Text color for selected option */
+}
+
+/* Style for dropdown options on hover */
+.form-input select option:hover {
+    background-color: #F08080; /* Change to Light Lavender on hover */
+    color: white; /* Text color for hovered option */
+}
+
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #F08080; /* Coral */
     color: white;
     font-size: 16px;
     border: none;
@@ -84,7 +193,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #F3A4A4; /* Lighter Coral */
 }
 
 /* Chat Screen Styling */
@@ -97,7 +206,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #F08080; /* Light Lavender header */
     color: white;
 }
 
@@ -111,11 +220,57 @@ button:hover {
     padding: 5px 10px;
     border-radius: 5px;
 }
+/* Exit Button Styling */
+#exit-chat {
+    background-color: #dc3545; /* Red color */
+    padding: 5px 8px; /* Reduce padding for a smaller button */
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size */
+    height: 30px; /* Set a specific height for consistency */
+    width: 70px; /* Optional: Set a specific width for the button */
+}
+
+#exit-chat:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+.message .name {
+    font-weight: bold;
+    font-size: 12px; /* Smaller font size for names */
+    color: #333; /* Darker color for better readability */
+    margin-bottom: 5px; /* Space between name and message text */
+}
+
+.message .text {
+    background-color: #f1f1f1;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+    font-size: 14px; /* Keep the message text slightly larger */
+}
+
+/* Style for user messages */
+.my-message .text {
+    background-color: #F08080; /* Coral for user messages */
+    color: white;
+}
+
+/* Style for assistant messages */
+.other-message .text {
+    background-color: #EAB8E4; /* Light lavender for assistant messages */
+    color: black; /* Ensure contrast with the background */
+}
+
 
 .messages {
     flex: 1;
     padding: 10px;
     background-color: #f9f9f9;
+    border: 2px solid #E4B8D4; /* Soft Lavender border for the chat box */
     overflow-y: auto;
 }
 
@@ -145,7 +300,12 @@ button:hover {
 }
 
 .my-message .text {
-    background-color: #007bff;
+    background-color: #F3A4A4; /* Coral user message */
+    color: white;
+}
+
+.other-message .text {
+    background-color: #F08080; /* Light Lavender assistant message */
     color: white;
 }
 
@@ -153,33 +313,39 @@ button:hover {
     text-align: center;
     font-size: 12px;
     margin-bottom: 10px;
-    color: gray;
+    color: #A3A3A3; /* Light Gray timestamp */
 }
 
+/* Typebox styling */
 /* Typebox styling */
 .typebox {
     display: flex;
     padding: 10px;
-    background-color: #f1f1f1;
+    background-color: #F1F1F1;
 }
 
 #message-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
+    flex: 1; /* Ensures the input takes up remaining space */
+    padding: 15px; /* Increase padding for a larger input box */
+    border: 1px solid #EAB8E4; /* Soft Lavender border */
     border-radius: 5px;
     font-size: 16px;
     margin-right: 10px;
+    background-color: #F8D9E9; /* Light Pink input */
+    min-height: 50px; /* Set a minimum height for the textbox */
 }
 
 #send-message {
-    background-color: #007bff;
-    padding: 10px 15px;
+    background-color: #F08080; /* Coral button */
+    padding: 10px 10px; /* Reduce padding for a smaller button */
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    font-size: 14px; /* Adjust font size for a smaller button */
+    height: 50px; /* Set a specific height for consistency */
+    width: 80px; /* Optional: Set a specific width for the button */
 }
 
 #send-message:hover {
-    background-color: #0056b3;
+    background-color: #F3A4A4; /* Lighter Coral hover */
 }

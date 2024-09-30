@@ -7,24 +7,32 @@ const io = require("socket.io")(server);
 
 app.use(express.static(path.join(__dirname + "/public")));
 
-io.on("connection", function(socket) {
-    // Listen for a new user joining
-    socket.on("newuser", function(username) {
-        socket.broadcast.emit("update", username + " joined the conversation");
+io.on("connection", function (socket) {
+    // Join room
+    socket.on("joinRoom", function ({ username, room }) {
+        socket.join(room);
+        socket.to(room).emit("update", `${username} joined the room`);
+
+        // Notify the user that they joined the room successfully
+        socket.emit("update", `You joined the ${room} room`);
     });
 
-    // Listen for a user leaving
-    socket.on("exituser", function(username) {
-        socket.broadcast.emit("update", username + " left the conversation");
+    // Handle user messages
+    socket.on("chat", function ({ username, text, room }) {
+        io.to(room).emit("chat", { username, text });
     });
 
-    // Listen for a chat message
-    socket.on("chat", function(message) {
-        // Here, 'message' contains both the username and the text
-        socket.broadcast.emit("chat", message);
+    // Handle user exiting the room
+    socket.on("exituser", function ({ username, room }) {
+        socket.leave(room);
+        socket.to(room).emit("update", `${username} left the room`);
+    });
+
+    socket.on("disconnect", () => {
+        console.log("A user disconnected");
     });
 });
 
 server.listen(5000, () => {
-    console.log("Server is running on port 5000");
+    console.log("Server running on port 5000");
 });
