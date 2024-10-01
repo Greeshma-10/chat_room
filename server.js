@@ -5,7 +5,13 @@ const socketio = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+    cors: {
+        origin: "https://realtimechat-greeshma-vs-projects.vercel.app", // Replace with your actual frontend URL
+        methods: ["GET", "POST"],
+        credentials: true // This may be needed if you're using cookies or sessions
+    }
+});
 
 // Serve static files
 app.use(express.static(path.join(__dirname, "public")));
