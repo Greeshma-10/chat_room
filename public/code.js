@@ -1,6 +1,6 @@
 (function () {
     const app = document.querySelector(".app");
-    const socket = io("https://realtimechat-greeshma-vs-projects.vercel.app/"); // Ensure it points to your server's URL and port
+    const socket = io(); // Connect to the server at the same origin (Vercel)
     let uname, room;
 
     // Join user to a room
@@ -9,11 +9,11 @@
         room = app.querySelector("#room-select").value;
 
         if (username.length === 0 || room === "") {
-            alert("Please enter a username and select a room."); // Alert for missing data
+            alert("Please enter a username and select a room.");
             return;
         }
 
-        socket.emit("joinRoom", { username, room }); // Emit to server
+        socket.emit("joinRoom", { username, room });
         uname = username;
         app.querySelector(".join-screen").classList.remove("active");
         app.querySelector(".chat-screen").classList.add("active");
@@ -22,7 +22,7 @@
     // Handle Enter key on username input
     app.querySelector("#username").addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
-            app.querySelector("#join-user").click(); // Trigger join button on Enter
+            app.querySelector("#join-user").click();
         }
     });
 
@@ -30,12 +30,12 @@
     app.querySelector("#send-message").addEventListener("click", function () {
         let message = app.querySelector("#message-input").value;
         if (message.length === 0) {
-            return; // Don't send empty messages
+            return;
         }
 
         renderMessage("my", { username: uname, text: message });
         socket.emit("chat", { username: uname, text: message, room });
-        app.querySelector("#message-input").value = ""; // Clear input field after sending
+        app.querySelector("#message-input").value = "";
     });
 
     // Handle Enter key for sending messages
@@ -83,3 +83,4 @@
         messageContainer.scrollTop = messageContainer.scrollHeight - messageContainer.clientHeight; // Scroll to bottom
     }
 })();
+

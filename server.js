@@ -5,17 +5,12 @@ const socketio = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server, {
-    cors: {
-        origin: "https://realtimechat-greeshma-vs-projects.vercel.app", // Replace with your actual frontend URL
-        methods: ["GET", "POST"],
-        credentials: true // This may be needed if you're using cookies or sessions
-    }
-});
+const io = socketio(server);
 
 // Serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
+// Socket.IO connection handling
 io.on("connection", (socket) => {
     console.log("New user connected");
 
@@ -43,7 +38,8 @@ io.on("connection", (socket) => {
     });
 });
 
-// Server listening on port 5000
-server.listen(5000, () => {
-    console.log("Server running on port 5000");
+// Server listening on a dynamic port
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
