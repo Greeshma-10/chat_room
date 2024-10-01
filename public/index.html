@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatroom</title>
+    <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -11,15 +11,15 @@
         <!-- Join screen -->
         <div class="screen join-screen active">
             <div class="form">
-                <h2>Join Chatroom</h2>
+                <h2> Join Chatroom </h2>
                 <div class="form-input">
-                    <label>Username</label>
-                    <input type="text" id="username" placeholder="Enter your username">
+                    <label> Username</label>
+                    <input type="text" id="username">
                 </div>
                 <div class="form-input">
                     <label for="room-select">Choose a group that interests you</label>
                     <select id="room-select">
-                        <option value="">Select a group</option> <!-- Ensure the default option is empty -->
+                        <option value="">Select</option>
                         <option value="fitness">Fitness</option>
                         <option value="meditation">Meditation</option>
                         <option value="mental">Mental Health</option>
@@ -42,14 +42,14 @@
             <div class="messages"></div>
 
             <div class="typebox">
-                <input type="text" id="message-input" placeholder="Type your message...">
+                <input type="text" id="message-input">
                 <button id="send-message">Send</button>
             </div>
         </div>
     </div>
 
-    <!-- Socket.IO script -->
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script> <!-- Ensure correct path to socket.io -->
-    <script type="text/javascript" src="code.js"></script> <!-- Your custom script -->
+    <!-- Include Socket.IO client -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script type="text/javascript" src="code.js"></script>
 </body>
 </html>
