@@ -10,7 +10,7 @@ const server = http.createServer(app);
 // Allow CORS for cross-origin requests
 const io = socketio(server, {
     cors: {
-        origin: "https://realtimechat-kohl.vercel.app/", // Allows any origin. You can restrict it by specifying your frontend URL
+        origin: "https://realtimechat-git-main-greeshma-vs-projects.vercel.app/", // Allows any origin. You can restrict it by specifying your frontend URL
         methods: ["GET", "POST"],
         credentials: true
     }
