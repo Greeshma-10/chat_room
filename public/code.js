@@ -1,6 +1,6 @@
 (function () {
     const app = document.querySelector(".app");
-    const socket = io("http://localhost:5000"); // Ensure it points to your server's URL and port
+    const socket = io("https://realtimechat-git-main-greeshma-vs-projects.vercel.app/"); // Ensure it points to your server's URL and port
     let uname, room;
 
     // Join user to a room
