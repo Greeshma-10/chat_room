@@ -10,7 +10,6 @@ const io = socketio(server);
 // Serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
-// Socket.IO connection handling
 io.on("connection", (socket) => {
     console.log("New user connected");
 
@@ -38,8 +37,7 @@ io.on("connection", (socket) => {
     });
 });
 
-// Server listening on a dynamic port
-const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Server listening on port 5000
+server.listen(5000, () => {
+    console.log("Server running on port 5000");
 });
