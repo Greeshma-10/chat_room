@@ -1,6 +1,6 @@
 (function () {
     const app = document.querySelector(".app");
-    const socket = io("https://realtimechat-git-main-greeshma-vs-projects.vercel.app/"); // Ensure it points to your server's URL and port
+    const socket = io("https://realtimechat-greeshma-vs-projects.vercel.app/"); // Ensure it points to your server's URL and port
     let uname, room;
 
     // Join user to a room
@@ -20,10 +20,9 @@
     });
 
     // Handle Enter key on username input
-    // Handle Enter key on the username input to trigger the join button
     app.querySelector("#username").addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
-            app.querySelector("#join-user").click(); // Trigger the join button
+            app.querySelector("#join-user").click(); // Trigger join button on Enter
         }
     });
 

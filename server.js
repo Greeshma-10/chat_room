@@ -2,25 +2,13 @@ const express = require("express");
 const path = require("path");
 const http = require("http");
 const socketio = require("socket.io");
-const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
+const io = socketio(server);
 
-// Allow CORS for cross-origin requests
-const io = socketio(server, {
-    cors: {
-        origin: "https://realtimechat-git-main-greeshma-vs-projects.vercel.app/", // Allows any origin. You can restrict it by specifying your frontend URL
-        methods: ["GET", "POST"],
-        credentials: true
-    }
-});
-
-// Serve static files (like index.html, style.css, etc.)
+// Serve static files
 app.use(express.static(path.join(__dirname, "public")));
-
-// Middleware for CORS (if needed for other routes)
-app.use(cors());
 
 io.on("connection", (socket) => {
     console.log("New user connected");
@@ -49,8 +37,7 @@ io.on("connection", (socket) => {
     });
 });
 
-// Use a dynamic port for deployment (process.env.PORT) or default to 5000 locally
-const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Server listening on port 5000
+server.listen(5000, () => {
+    console.log("Server running on port 5000");
 });
