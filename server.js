@@ -16,13 +16,18 @@ io.on("connection", (socket) => {
     // User joins a room
     socket.on("joinRoom", ({ username, room }) => {
         socket.join(room);
-        socket.to(room).emit("update", `${username} joined the room`); // Notify others in the room
-        socket.emit("update", `You joined the ${room} room`); // Notify the user themselves
+        socket.to(room).emit("update", `${username} joined the room`);
+        socket.emit("update", `You joined the ${room} room`);
     });
 
     // Handle chat messages
     socket.on("chat", ({ username, text, room }) => {
-        io.to(room).emit("chat", { username, text });
+        const messageData = {
+            username,
+            text,
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // Format as HH:MM
+        };
+        io.to(room).emit("chat", messageData);
     });
 
     // Handle user exiting the chat

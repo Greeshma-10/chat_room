@@ -1,4 +1,3 @@
-
 (function () {
     const app = document.querySelector(".app");
     const socket = io("http://localhost:5000"); // Ensure it points to your server's URL and port
@@ -14,7 +13,7 @@
             return;
         }
 
-        socket.emit("joinRoom", { username, room }); // Emit to server
+        socket.emit("joinRoom", { username, room });
         uname = username;
         app.querySelector(".join-screen").classList.remove("active");
         app.querySelector(".chat-screen").classList.add("active");
@@ -23,7 +22,7 @@
     // Handle Enter key on username input
     app.querySelector("#username").addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
-            app.querySelector("#join-user").click(); // Trigger join button on Enter
+            app.querySelector("#join-user").click();
         }
     });
 
@@ -34,7 +33,13 @@
             return; // Don't send empty messages
         }
 
-        renderMessage("my", { username: uname, text: message });
+        const messageData = {
+            username: uname,
+            text: message,
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // Format as HH:MM
+        };
+
+        renderMessage("my", messageData);
         socket.emit("chat", { username: uname, text: message, room });
         app.querySelector("#message-input").value = ""; // Clear input field after sending
     });
@@ -68,19 +73,34 @@
     function renderMessage(type, message) {
         let messageContainer = app.querySelector(".messages");
         let el = document.createElement("div");
-
+    
         if (type === "my") {
             el.setAttribute("class", "message my-message");
-            el.innerHTML = `<div><div class="name">You</div><div class="text">${message.text}</div></div>`;
+            el.innerHTML = `
+                <div>
+                    <div class="name">You</div>
+                    <div class="text">
+                        ${message.text}
+                        <span class="time">${message.time}</span> <!-- Time beside message -->
+                    </div>
+                </div>`;
         } else if (type === "other") {
             el.setAttribute("class", "message other-message");
-            el.innerHTML = `<div><div class="name">${message.username}</div><div class="text">${message.text}</div></div>`;
+            el.innerHTML = `
+                <div>
+                    <div class="name">${message.username}</div>
+                    <div class="text">
+                        ${message.text}
+                        <span class="time">${message.time}</span> <!-- Time beside message -->
+                    </div>
+                </div>`;
         } else if (type === "update") {
             el.setAttribute("class", "update");
             el.innerText = message;
         }
-
+    
         messageContainer.appendChild(el);
         messageContainer.scrollTop = messageContainer.scrollHeight - messageContainer.clientHeight; // Scroll to bottom
     }
+    
 })();

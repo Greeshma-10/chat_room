@@ -253,6 +253,17 @@ button:hover {
     word-wrap: break-word;
     font-size: 14px; /* Keep the message text slightly larger */
 }
+.message .text {
+    display: flex;
+    justify-content: space-between; /* Make the text and time stay on the same line */
+    align-items: center;
+}
+
+.message .time {
+    font-size: 0.8em; /* Make the time slightly smaller */
+    color: #888; /* Set a lighter color for the time */
+    margin-left: 10px; /* Add space between the message and time */
+}
 
 /* Style for user messages */
 .my-message .text {
